@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Search Tabs",
+  "version": "1.0",
+  "description": "Search text content of all tabs",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "tabs",
+    "scripting"
+  ]
+}
