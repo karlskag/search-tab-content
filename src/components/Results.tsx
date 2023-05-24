@@ -22,7 +22,16 @@ const getSortedMatches = (matches: NodeDataRecord) => {
   })
 }
 
-export const Results = (props: { matches: NodeDataRecord }) => {
+const HighlightedResult = (props) => {
+  const splitText = props.text.split(props.query)
+  return splitText.map((t, i) => {
+    if (t === '') return <span class="highlighted">{props.query}</span>
+    else if (i === (splitText.length - 1)) return <span>{t}</span>
+    else return <><span>{t}</span><span class="highlighted">{props.query}</span></>
+  })
+}
+
+export const Results = (props: { matches: NodeDataRecord, query: string }) => {
   const [sortedMatches, setSortedMatches] = createSignal(getSortedMatches(props.matches ?? {}))
   createEffect(() => setSortedMatches(getSortedMatches(props.matches)))
 
@@ -46,7 +55,9 @@ export const Results = (props: { matches: NodeDataRecord }) => {
                     class="match"
                     onkeypress={(e) => a11yClick(e) && markAndShowResult(match.className, tabId)}
                     onclick={() => markAndShowResult(match.className, tabId)}>
-                <span class="line-clamp-2">{match.text}</span>
+                <span class="line-clamp-2">
+                  <HighlightedResult text={match.text} query={props.query} />
+                </span>
               </li>}
             </For>
           </ul>

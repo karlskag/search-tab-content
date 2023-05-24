@@ -13,7 +13,7 @@ export const prepareRemote = () => {
   // Register search result listener
   chrome.runtime.onMessage.addListener(function(className) {
     const resultEls = Array.from(document.getElementsByClassName(className) as HTMLCollectionOf<HTMLElement>)
-    resultEls[0].style.background = 'yellow'
+    resultEls[0].style.background = '#F7DE3A'
     resultEls[0].style.color = 'black'
     resultEls[0].scrollIntoView({ block: 'center' })
 

@@ -40,6 +40,6 @@ export default () => {
         <input autofocus class="search-input" placeholder="Search for..." oninput={(e) => setQuery(e.target.value)} />
       </div>
     </form>
-    <Results matches={getMatchingNodes()} />
+    <Results matches={getMatchingNodes()} query={query()}/>
   </div>;
 };
