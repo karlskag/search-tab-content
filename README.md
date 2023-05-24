@@ -19,4 +19,7 @@ When a result is clicked, the user is navigated to the correct tab & element, wh
 
 ![img.png](readme_extension-open.png)
 
+Below is an example of a highlighted text element after the linked search result has been clicked. 
+The correct tab is opened and the element is scrolled into view.
+
 ![img_1.png](readme_extention-highlight.png)
