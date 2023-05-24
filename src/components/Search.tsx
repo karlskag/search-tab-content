@@ -13,10 +13,10 @@ export default () => {
   const getMatchingNodes = (): NodeDataRecord => {
     const input = query()
     const trimmedInput = input.trim()
-    if (trimmedInput.length < 3) return
+    if (trimmedInput.length < 3) return {}
 
     return Object.entries(nodeData).reduce((acc, [id, data]) => {
-      const matches = data.filter(nd => nd.text.includes(input))
+      const matches = data.filter(nd => nd.text.toLowerCase().includes(input.toLowerCase()))
       if (!!matches.length) {
         acc[id] = matches
       }
