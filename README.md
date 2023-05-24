@@ -1,36 +1,22 @@
-## Usage
+# Search tab content
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This is a custom chrome extension used for searching text content in all open tabs of a browser window.
+A search result can be quickly accessed by clicking the matching text in the list of results.
+This will navigate to the correct tab, scroll text node into view and highlight it with a yellow background.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+### How it works
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+When the extension is launched and the search app is mounted it injects a content-script in each tabs environment, which does two things:  
+1. Using a [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker) it traverses and filters out all text nodes in the document body based on some basic criteria, like not being hidden by css and not being an empty string.
+2. It sets a unique classname on each potential search result in the DOM
+3. It reports back with all text data and the class name used as an anchor for the potential search result.
+4. It sets up an event listener that can be accessed by the extension for navigating and highlighting a clicked search result based on the class name.
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+When a search query is entered by the user, all matching text nodes are displayed in a list of results, grouped by tab.
+The groups are ordered by number of matching nodes.
 
-## Available Scripts
+When a result is clicked, the user is navigated to the correct tab & element, which is briefly highlighted with a yellow background.
 
-In the project directory, you can run:
+![img.png](readme_extension-open.png)
 
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
-# search-tab-content
-# search-tab-content
+![img_1.png](readme_extention-highlight.png)
