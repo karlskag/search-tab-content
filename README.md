@@ -1,8 +1,18 @@
-# Search tab content
+![img.png](public/icon128.png)
+# Search Tab Content
 
 This is a custom chrome extension used for searching text content in all open tabs of a browser window.
 A search result can be quickly accessed by clicking the matching text in the list of results.
 This will navigate to the correct tab, scroll text node into view and highlight it with a yellow background.
+
+### Run it locally
+- `npm install`
+- `npm run build-extension`
+- In chrome, go to manage extensions
+- Enable developer mode and press "Load unpacked"
+- Select and upload project `build`-directory
+
+You should now be able to enable and use the extension in your browser.
 
 ### How it works
 
